@@ -23,6 +23,20 @@ Player::Player()
 		}
 	}
 }
+void Player::Update()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (Global_Map[i][j] == 2)
+			{
+				m_Player_x = j;
+				m_Player_y = i;
+			}
+		}
+	}
+}
 
 void Player::Debug()
 {
@@ -30,7 +44,7 @@ void Player::Debug()
 	std::cout << " y+1:" << Global_Map[m_Player_y + 1][m_Player_x];
 	std::cout << " y-1:" << Global_Map[m_Player_y - 1][m_Player_x];
 	std::cout << " x+1:" << Global_Map[m_Player_y][m_Player_x + 1];
-	std::cout << " x-1:" << Global_Map[m_Player_y][m_Player_x - 1];
+	std::cout << " x-1:" << Global_Map[m_Player_y][m_Player_x - 1] << std::endl;
 }
 
 void Player::move()
@@ -55,7 +69,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 2;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y - 1][m_Player_x] == 4)
+			else if (Global_Map[m_Player_y - 1][m_Player_x] == 4)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -69,7 +83,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 6;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y - 1][m_Player_x] == 3)
+			else if (Global_Map[m_Player_y - 1][m_Player_x] == 3)
 			{
 				if (Global_Map[m_Player_y - 2][m_Player_x] == 0)
 				{
@@ -85,10 +99,6 @@ void Player::move()
 					if (Global_Map[m_Player_y][m_Player_x] == 3)
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
-					}
-					if (Global_Map[m_Player_y][m_Player_x] == 5)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
 					}
 					Global_Map[m_Player_y - 1][m_Player_x] = 3;
 					IsMove = true;
@@ -116,7 +126,7 @@ void Player::move()
 					IsMove = true;
 				}
 			}
-			if (Global_Map[m_Player_y - 1][m_Player_x] == 5 && Global_Map[m_Player_y - 2][m_Player_x] != 1 && Global_Map[m_Player_y - 2][m_Player_x] != 3 && Global_Map[m_Player_y - 2][m_Player_x] != 3 && Global_Map[m_Player_y - 2][m_Player_x] != 5)
+			else if (Global_Map[m_Player_y - 1][m_Player_x] == 5 && Global_Map[m_Player_y - 2][m_Player_x] != 1 && Global_Map[m_Player_y - 2][m_Player_x] != 3 && Global_Map[m_Player_y - 2][m_Player_x] != 3 && Global_Map[m_Player_y - 2][m_Player_x] != 5)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -155,7 +165,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 2;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y + 1][m_Player_x] == 4)
+			else if (Global_Map[m_Player_y + 1][m_Player_x] == 4)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -169,7 +179,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 6;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y + 1][m_Player_x] == 3)
+			else if (Global_Map[m_Player_y + 1][m_Player_x] == 3)
 			{
 				if (Global_Map[m_Player_y + 2][m_Player_x] == 0)
 				{
@@ -185,10 +195,6 @@ void Player::move()
 					if (Global_Map[m_Player_y][m_Player_x] == 3)
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
-					}
-					if (Global_Map[m_Player_y][m_Player_x] == 5)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
 					}
 					Global_Map[m_Player_y + 1][m_Player_x] = 3;
 					IsMove = true;
@@ -208,15 +214,11 @@ void Player::move()
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
 					}
-					if (Global_Map[m_Player_y][m_Player_x] == 4)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
-					}
 					Global_Map[m_Player_y + 1][m_Player_x] = 5;
 					IsMove = true;
 				}
 			}
-			if (Global_Map[m_Player_y + 1][m_Player_x] == 5 && Global_Map[m_Player_y + 2][m_Player_x] != 1 && Global_Map[m_Player_y + 2][m_Player_x] != 3 && Global_Map[m_Player_y + 2][m_Player_x] != 5)
+			else if (Global_Map[m_Player_y + 1][m_Player_x] == 5 && Global_Map[m_Player_y + 2][m_Player_x] != 1 && Global_Map[m_Player_y + 2][m_Player_x] != 3 && Global_Map[m_Player_y + 2][m_Player_x] != 5)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -255,7 +257,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 2;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y][m_Player_x - 1] == 4)
+			else if (Global_Map[m_Player_y][m_Player_x - 1] == 4)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -269,7 +271,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 6;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y][m_Player_x - 1] == 3)
+			else if (Global_Map[m_Player_y][m_Player_x - 1] == 3)
 			{
 				if (Global_Map[m_Player_y][m_Player_x - 2] == 0)
 				{
@@ -285,10 +287,6 @@ void Player::move()
 					if (Global_Map[m_Player_y][m_Player_x] == 3)
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
-					}
-					if (Global_Map[m_Player_y][m_Player_x] == 5)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
 					}
 					Global_Map[m_Player_y][m_Player_x - 1] = 3;
 					IsMove = true;
@@ -308,15 +306,11 @@ void Player::move()
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
 					}
-					if (Global_Map[m_Player_y][m_Player_x] == 4)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
-					}
 					Global_Map[m_Player_y][m_Player_x - 1] = 5;
 					IsMove = true;
 				}
 			}
-			if (Global_Map[m_Player_y][m_Player_x - 1] == 5 && Global_Map[m_Player_y][m_Player_x - 2] != 1 && Global_Map[m_Player_y][m_Player_x - 2] != 3 && Global_Map[m_Player_y][m_Player_x - 2] != 5)
+			else if (Global_Map[m_Player_y][m_Player_x - 1] == 5 && Global_Map[m_Player_y][m_Player_x - 2] != 1 && Global_Map[m_Player_y][m_Player_x - 2] != 3 && Global_Map[m_Player_y][m_Player_x - 2] != 5)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -355,7 +349,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 2;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y][m_Player_x + 1] == 4)
+			else if (Global_Map[m_Player_y][m_Player_x + 1] == 4)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -369,7 +363,7 @@ void Player::move()
 				Global_Map[m_Player_y][m_Player_x] = 6;
 				IsMove = true;
 			}
-			if (Global_Map[m_Player_y][m_Player_x + 1] == 3)
+			else if (Global_Map[m_Player_y][m_Player_x + 1] == 3)
 			{
 				if (Global_Map[m_Player_y][m_Player_x + 2] == 0)
 				{
@@ -385,10 +379,6 @@ void Player::move()
 					if (Global_Map[m_Player_y][m_Player_x] == 3)
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
-					}
-					if (Global_Map[m_Player_y][m_Player_x] == 5)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
 					}
 					Global_Map[m_Player_y][m_Player_x + 1] = 3;
 					IsMove = true;
@@ -408,15 +398,11 @@ void Player::move()
 					{
 						Global_Map[m_Player_y][m_Player_x] = 2;
 					}
-					if (Global_Map[m_Player_y][m_Player_x] == 4)
-					{
-						Global_Map[m_Player_y][m_Player_x] = 6;
-					}
 					Global_Map[m_Player_y][m_Player_x + 1] = 5;
 					IsMove = true;
 				}
 			}
-			if (Global_Map[m_Player_y][m_Player_x + 1] == 5 && Global_Map[m_Player_y][m_Player_x + 2] != 1 && Global_Map[m_Player_y][m_Player_x + 2] != 3 && Global_Map[m_Player_y][m_Player_x + 2] != 5)
+			else if (Global_Map[m_Player_y][m_Player_x + 1] == 5 && Global_Map[m_Player_y][m_Player_x + 2] != 1 && Global_Map[m_Player_y][m_Player_x + 2] != 3 && Global_Map[m_Player_y][m_Player_x + 2] != 5)
 			{
 				if (Global_Map[m_Player_y][m_Player_x] == 2)
 				{
@@ -452,24 +438,11 @@ Map::Map()
 			Global_Map[i][j] = 0;
 		}
 	}
-	if (m_Map_level == 0)
+	for (int i = 0; i < 9; i++)
 	{
-		for (int i = 0; i < 9; i++)
+		for (int j = 0; j < 8; j++)
 		{
-			for (int j = 0; j < 8; j++)
-			{
-				Global_Map[i][j] = MapLib.Level1[i][j];
-			}
-		}
-	}
-	if (m_Map_level == 1)
-	{
-		for (int i = 0; i < 9; i++)
-		{
-			for (int j = 0; j < 9; j++)
-			{
-				Global_Map[i][j] = MapLib.Level2[i][j];
-			}
+			Global_Map[i][j] = MapLib.Level1[i][j];
 		}
 	}
 }
@@ -511,4 +484,49 @@ void Map::Show()
 		}
 		std::cout << std::endl;
 	}
+}
+
+void Map::Update()
+{
+	if (m_Map_level == 0)
+				{
+					for (int i = 0; i < 10; i++)
+					{
+						for (int j = 0; j < 10; j++)
+						{
+							Global_Map[i][j] = 0;
+						}
+					}
+					for (int i = 0; i < 9; i++)
+					{
+						for (int j = 0; j < 8; j++)
+						{
+							Global_Map[i][j] = MapLib.Level1[i][j];
+						}
+					}
+				}
+	if (m_Map_level == 1)
+				{
+					for (int i = 0; i < 10; i++)
+					{
+						for (int j = 0; j < 10; j++)
+						{
+							Global_Map[i][j] = 0;
+						}
+					}
+					for (int i = 0; i < 9; i++)
+					{
+						for (int j = 0; j < 9; j++)
+						{
+							Global_Map[i][j] = MapLib.Level2[i][j];
+						}
+					}
+				}
+	/*for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			Global_Map[i][j] = 0;
+		}
+	}*/
 }
