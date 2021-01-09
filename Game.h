@@ -33,5 +33,6 @@ public:
 	void Show();
 	void Update();
 private:
+	bool UpdateMap = false;
 	int m_Map_level = 0;
 };

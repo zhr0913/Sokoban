@@ -438,6 +438,7 @@ Map::Map()
 			Global_Map[i][j] = 0;
 		}
 	}
+	m_Map_level = 0;
 	for (int i = 0; i < 9; i++)
 	{
 		for (int j = 0; j < 8; j++)
@@ -488,45 +489,64 @@ void Map::Show()
 
 void Map::Update()
 {
-	if (m_Map_level == 0)
-				{
-					for (int i = 0; i < 10; i++)
-					{
-						for (int j = 0; j < 10; j++)
-						{
-							Global_Map[i][j] = 0;
-						}
-					}
-					for (int i = 0; i < 9; i++)
-					{
-						for (int j = 0; j < 8; j++)
-						{
-							Global_Map[i][j] = MapLib.Level1[i][j];
-						}
-					}
-				}
-	if (m_Map_level == 1)
-				{
-					for (int i = 0; i < 10; i++)
-					{
-						for (int j = 0; j < 10; j++)
-						{
-							Global_Map[i][j] = 0;
-						}
-					}
-					for (int i = 0; i < 9; i++)
-					{
-						for (int j = 0; j < 9; j++)
-						{
-							Global_Map[i][j] = MapLib.Level2[i][j];
-						}
-					}
-				}
-	/*for (int i = 0; i < 10; i++)
+	int count = 0;
+	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			Global_Map[i][j] = 0;
+			if (Global_Map[i][j] == 4 || Global_Map[i][j] == 6)
+			{
+				count++;
+			}
 		}
-	}*/
+	}
+	if (count == 0)
+	{
+		m_Map_level++;
+		UpdateMap = true;
+	}
+	if (UpdateMap)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				Global_Map[i][j] = 0;
+			}
+		}
+		switch (m_Map_level)
+		{
+		default:
+			m_Map_level = 0;
+			break;
+		case 0:
+			for (int i = 0; i < 9; i++)
+			{
+				for (int j = 0; j < 8; j++)
+				{
+					Global_Map[i][j] = MapLib.Level1[i][j];
+				}
+			}
+			break;
+		case 1:
+			for (int i = 0; i < 9; i++)
+			{
+				for (int j = 0; j < 9; j++)
+				{
+					Global_Map[i][j] = MapLib.Level2[i][j];
+				}
+			}
+			break;
+		case 2:
+			for (int i = 0; i < 8; i++)
+			{
+				for (int j = 0; j < 6; j++)
+				{
+					Global_Map[i][j] = MapLib.Level3[i][j];
+				}
+			}
+			break;
+		}
+		UpdateMap = false;
+	}
 }

@@ -13,10 +13,10 @@ int main()
 		if (player.IsMove == true)//检测到活动后更新界面
 		{
 			system("cls");
-			//GameMap.Update();
+			GameMap.Update();
 			player.Update();
 			GameMap.Show();
-			player.Debug();
+			//player.Debug();
 			player.IsMove = false;
 		}
 	}
